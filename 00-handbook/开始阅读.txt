@@ -1,0 +1,12 @@
+AI 应用开发深入学习 · 50期交付包
+
+1. 直接打开「AI应用开发深入学习-50期离线手册.html」；无需联网。
+2. 配套代码在 ai-lab/；先阅读 ai-lab/README.md。
+3. Node 22.13+，npm ci、npm run build、npm run ingest、npm test、npm start。
+4. 默认是真实文档摘录，不调用LLM。真实模型请按README明确启用。
+5. 验证报告.json与ai-lab/docs/validation.json列明实测、模拟、未测。
+6. 原文件在original/，与上传文件SHA-256一致，未被覆盖。
+7. 首次安装依赖与下载模型需要联网；不含node_modules与模型权重。
+8. 进度笔记保存在浏览器，换文件位置或换浏览器前建议JSON备份。
+
+本包包含有限官方公开快照与用户原始资料；请保留各自许可与权利边界，不直接公开发布用户原件。

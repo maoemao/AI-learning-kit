@@ -1,0 +1,8 @@
+[
+ {"id":"button-loading","question":"button loading state","version":"2.11.8","snapshot":"element-plus@2.11.8","k":4,"required":[["button:7"]],"referenceClaims":["Set loading to true to display loading state"],"kind":"single-section"},
+ {"id":"button-loading-default","question":"button loading default value","version":"2.11.8","snapshot":"element-plus@2.11.8","k":4,"required":[["button:11"]],"referenceClaims":["loading is boolean and defaults to false"],"kind":"single-section"},
+ {"id":"button-loading-custom","question":"button loading slot loadingIcon priority","version":"2.11.8","snapshot":"element-plus@2.11.8","k":4,"required":[["button:7"],["button:11"]],"referenceClaims":["loading slot has higher priority than loadingIcon","loading defaults to false"],"kind":"cross-section"},
+ {"id":"dialog-escape","question":"dialog close-on-press-escape default","version":"2.11.8","snapshot":"element-plus@2.11.8","k":4,"required":[["dialog:13"]],"referenceClaims":["close-on-press-escape defaults to true"],"kind":"single-section"},
+ {"id":"unknown-button","question":"button loading retry automatically seven times","version":"2.11.8","snapshot":"element-plus@2.11.8","k":4,"required":[],"referenceClaims":[],"kind":"unanswerable-in-snapshot"},
+ {"id":"zh-loading","question":"按钮如何显示转圈加载状态","version":"2.11.8","snapshot":"element-plus@2.11.8","k":4,"required":[["button:7"]],"referenceClaims":["Set loading true"],"kind":"cross-language"}
+]

@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-24 Asia/Shanghai",
+  "scope": "交付学习仓库；未修改原始HTML、现有ai-memory-mcp项目、真实记忆库或AI客户端配置",
+  "environment": {
+    "core": "macOS arm64, Node.js 22.23.3 explicit path; npm install environment also used Node 26.10.0",
+    "browser": "Chrome headless via Playwright 1.56.1; file:// offline + local HTTP"
+  },
+  "passed": [
+    "TypeScript strict compilation; 37 Vitest tests (rerun with explicit Node22)",
+    "4 pinned official Markdown documents -> 66 canonical chunks; source hashes and MIT license retained",
+    "REAL BM25 retrieval on 6-case public development set; English evidence groups reached, Chinese lexical query failed and preserved",
+    "REAL local E5 ONNX inference on 66 public chunks: 384 dimensions, q8 CPU, mean/normalized, revision pinned; demonstration top1 button:7",
+    "Clean-copy npm ci --offline, build, ingest, tests and Agent-MCP integration (cached npm packages; no pre-existing node_modules)",
+    "REAL stdio MCP Client/Server initialization, tool discovery, search and temporary SQLite persistence",
+    "REAL LangGraph interrupt/resume; node restarts twice; MemorySaver is RAM only",
+    "SQLite restart/scope/dedup/optimistic conflict/forget; all tests use temporary databases",
+    "Agent -> REAL MCP -> official docs + temporary SQLite integration; model decisions SCRIPTED fixtures, no LLM",
+    "UTF-8 and SSE every-byte split, multiline data, CRLF, heartbeat and incomplete EOF",
+    "Controlled telemetry allowlist final JSON; nested canary removed while fixed diagnostic fields retained",
+    "Browser: offline reading, progress/notes/quizzes persistence, search, real Markdown and JSON export/restore, 390px/1440px overflow checks",
+    "REAL local HTTP question/clarification/source links; controlled-response fixtures for race/cancel/incomplete EOF"
+  ],
+  "not_run": [
+    "OpenAI/cloud model generation, real-model function/tool decisions and full model answer evaluations; no API key used",
+    "Ollama generation/embedding service; Qdrant Docker/ANN service and pgvector",
+    "E5 optional fresh download/install helper end-to-end on a clean machine; this run reused existing pinned local files/modules; not a deliberate OS network-disconnect test",
+    "Learned reranker, LLM query rewrite/HyDE, autonomous Multi-Agent; deterministic teaching baselines only",
+    "Graph disk-backed checkpoint recovery; supplier token streaming/replay; complete incremental tombstone/vector deletion pipeline",
+    "Full OTel HTTP tracing, external Collector/exporter privacy boundary, load/performance tests",
+    "Docker image build/run, GitHub-hosted CI, remote deployment, third-party MCP Host UI interoperability",
+    "Existing ai-memory-mcp 0.4.0 full regression suite; source/README inspected only; independent teaching Memory is not a full port",
+    "Firefox/Safari/mobile physical device; current browser checks are desktop Chrome with mobile viewport"
+  ],
+  "known_failures_and_limits": [
+    "Chinese-only query has zero BM25 hits on the English snapshot; not hidden as a passing test",
+    "Query-selected table excerpts retain entire matched rows, headers, canonical source ID/hash; cross-row relations may still require extra evidence",
+    "E5 truncates long sections at 512 tokens; one ranking example is not a general accuracy benchmark",
+    "Citation validation checks structural membership, not semantic entailment; no independent holdout",
+    "SSE sends buffered answers in blocks, not model-provider token streaming",
+    "Full ingest regenerates active flags from existing source documents; complete persistent deletion needs tombstones/source removal",
+    "Local teaching server has no multi-user authentication or production approval system"
+  ],
+  "browser": {
+    "date": "2026-11-24",
+    "browser": "Chrome headless via Playwright 1.56.1",
+    "checks": [
+      "50 lessons, 7 stages, 50 notes/quizzes, source appendix and all anchor targets",
+      "file:// offline read with no remote resource requests",
+      "completion, Chinese multiline notes and quiz persist after file:// reload; stored text remains inert",
+      "full text search, zero results and clear restore",
+      "Markdown exports have real line breaks, 50 lessons and source; JSON backup valid",
+      "JSON restore with confirmation updates note state",
+      "malformed/version-incompatible backup rejected",
+      "desktop 1440px and mobile 390px have no page horizontal overflow",
+      "storage failure is visible and export remains available",
+      "REAL local HTTP app emits meta/delta/sources/done, renders official source links",
+      "REAL HTTP missing-version clarification",
+      "CONTROLLED response fixture: old slow request cannot overwrite newer request",
+      "CONTROLLED truncated SSE fixture: EOF without done marked incomplete",
+      "CONTROLLED delayed response: stop remains stopped",
+      "REAL HTTP byte-fragmented Chinese POST, table default evidence, foreign Origin 403 and invalid input 400"
+    ],
+    "errors": []
+  }
+}

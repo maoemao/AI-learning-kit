@@ -1,0 +1,28 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Element Plus 文档助手 · 学习项目</title>
+<style>body{max-width:880px;margin:40px auto;padding:16px;font:17px/1.7 system-ui;background:#f3f6f7;color:#18333b}textarea{width:95%;height:80px}button,select{font:inherit;padding:8px;margin:8px 6px 8px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:22px;border-radius:12px}a{color:#066765}</style>
+<h1>Element Plus 文档助手</h1><p>官方 2.11.8 文档快照 · 只读检索 · 默认摘录模式。云端模式会向模型供应商发送问题与片段。</p>
+<label>问题<textarea id="q">How do I show a loading state on a Button?</textarea></label>
+<label>版本<select id="v"><option value="2.11.8">2.11.8</option><option value="">尚未确认</option></select></label><br>
+<button id="send">提问</button><button id="stop">停止</button><p id="status" role="status">就绪</p><pre id="out"></pre><ul id="sources"></ul>
+<script type="module">
+import { SSEParser } from '/sse.js';
+let run=0,controller;const $=id=>document.getElementById(id);
+$('stop').onclick=()=>{++run;controller?.abort();$('status').textContent='已停止，内容可能不完整';};
+$('send').onclick=async()=>{
+ const id=++run;controller?.abort();controller=new AbortController();$('out').textContent='';$('sources').replaceChildren();$('status').textContent='连接中';let done=false;
+ const parser=new SSEParser(e=>{
+  if(id!==run)return;const d=JSON.parse(e.data);
+  if(e.event==='delta')$('out').textContent+=d.text;
+  if(e.event==='meta')$('status').textContent=d.mode+' · 分块传输';
+  if(e.event==='sources')for(const s of d){const li=document.createElement('li'),a=document.createElement('a');a.textContent=s.id+' · '+s.section;a.href=s.url;a.target='_blank';a.rel='noopener';li.append(a);$('sources').append(li);}
+  if(e.event==='done'){done=true;$('status').textContent='已完成 · '+d.status;}
+  if(e.event==='error')throw Error(d.code);
+ });
+ try{
+  const res=await fetch('/api/ask',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:$('q').value,version:$('v').value||undefined}),signal:controller.signal});
+  if(!res.ok||!res.body)throw Error('HTTP_'+res.status);
+  const reader=res.body.getReader();while(true){const n=await reader.read();if(id!==run)return;if(n.done)break;parser.push(n.value);}parser.end();
+  if(id===run&&!done)$('status').textContent='连接中断：未收到 done，内容可能不完整';
+ }catch(e){if(id===run)$('status').textContent=e.name==='AbortError'?'已停止':'失败：'+e.message;}
+};
+</script></html>

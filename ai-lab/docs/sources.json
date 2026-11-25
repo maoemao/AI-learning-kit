@@ -1,0 +1,34 @@
+[
+  {
+    "file": "data/docs/button.md",
+    "url": "https://github.com/element-plus/element-plus/blob/2.11.8/docs/en-US/component/button.md",
+    "tag": "2.11.8",
+    "sha256": "f0a9913a4f99f426b576ce66de44a2ef651af780631fbbd1fa13eebd68302de1",
+    "license": "MIT",
+    "fetchedDate": "2026-11-24"
+  },
+  {
+    "file": "data/docs/dialog.md",
+    "url": "https://github.com/element-plus/element-plus/blob/2.11.8/docs/en-US/component/dialog.md",
+    "tag": "2.11.8",
+    "sha256": "b1da090825538dab6679c0e5a2d5089d7e7ad13b98b0976363830c0dd0f4062f",
+    "license": "MIT",
+    "fetchedDate": "2026-11-24"
+  },
+  {
+    "file": "data/docs/input.md",
+    "url": "https://github.com/element-plus/element-plus/blob/2.11.8/docs/en-US/component/input.md",
+    "tag": "2.11.8",
+    "sha256": "1c3e8589dcebdd09abee98fc234e4e6c3af18d5cebc468697219515cc38dc4ae",
+    "license": "MIT",
+    "fetchedDate": "2026-11-24"
+  },
+  {
+    "file": "data/docs/select.md",
+    "url": "https://github.com/element-plus/element-plus/blob/2.11.8/docs/en-US/component/select.md",
+    "tag": "2.11.8",
+    "sha256": "c337b322dd285ccdd9846d3d367d445a00d3361c864bc1b46c3bbb927fbe6f56",
+    "license": "MIT",
+    "fetchedDate": "2026-11-24"
+  }
+]

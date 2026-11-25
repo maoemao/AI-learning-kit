@@ -1,0 +1,25 @@
+# Dependencies
+ai-lab/node_modules/
+ai-lab/optional/e5/node_modules/
+
+# Build output (can regenerate with npm run build)
+ai-lab/dist/
+
+# Local model weights
+ai-lab/data/models/
+
+# Runtime database
+ai-lab/data/lab-memory.sqlite
+
+# Environment secrets
+ai-lab/.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

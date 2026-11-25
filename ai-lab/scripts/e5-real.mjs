@@ -1,0 +1,21 @@
+import { readFileSync,writeFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+import { resolve } from 'node:path';
+// Optional heavyweight dependency. All text inference is local; remote model loading disabled.
+const modulePath=process.env.E5_TRANSFORMERS_MODULE||resolve('optional/e5/node_modules/@huggingface/transformers/src/transformers.js');
+const {pipeline,env}=await import(pathToFileURL(modulePath).href);
+env.allowRemoteModels=false;env.allowLocalModels=true;
+if(!process.env.E5_MODEL_DIR)throw Error('Set E5_MODEL_DIR to a downloaded pinned ONNX model directory.');
+const f=await pipeline('feature-extraction',process.env.E5_MODEL_DIR,{dtype:'q8',device:'cpu',local_files_only:true,session_options:{intraOpNumThreads:2,interOpNumThreads:1}});
+const docs=JSON.parse(readFileSync('data/index.json','utf8')).filter(c=>c.active);
+const query=process.argv[2]||'How do I show a loading spinner on a button?';
+const encode=async(text,kind)=>Array.from((await f(`${kind}: ${text}`,{pooling:'mean',normalize:true,truncation:true,max_length:512})).data);
+const start=performance.now(),items=[];
+for(const c of docs)items.push({id:c.id,hash:c.hash,vector:await encode(c.text,'passage')});
+const queryVector=await encode(query,'query');
+const cosine=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0)/Math.sqrt(a.reduce((s,x)=>s+x*x,0)*b.reduce((s,x)=>s+x*x,0));
+const top=items.map(x=>({id:x.id,score:cosine(x.vector,queryVector)})).sort((a,b)=>b.score-a.score).slice(0,5);
+const result={kind:'REAL local ONNX inference, not simulated',model:'Xenova/multilingual-e5-small',revision:'761b726dd34fb83930e26aab4e9ac3899aa1fa78',pooling:'mean',dtype:'q8',prefix:'query/passage',maxTokens:512,timingScope:'encoding passages + query; initial model loading excluded',dimensions:queryVector.length,documents:items.length,query,elapsedMs:Math.round(performance.now()-start),top};
+writeFileSync('data/e5-result.json',JSON.stringify(result,null,2));
+writeFileSync('data/vectors.json',JSON.stringify({model:result.model,revision:result.revision,query,queryVector,items}));
+console.log(JSON.stringify(result,null,2));

@@ -1,0 +1,36 @@
+{
+  "kind": "REAL local ONNX inference, not simulated",
+  "model": "Xenova/multilingual-e5-small",
+  "revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+  "pooling": "mean",
+  "dtype": "q8",
+  "prefix": "query/passage",
+  "maxTokens": 512,
+  "dimensions": 384,
+  "documents": 66,
+  "query": "How do I show a loading spinner on a button?",
+  "elapsedMs": 1469,
+  "top": [
+    {
+      "id": "button:7",
+      "score": 0.8879478579999932
+    },
+    {
+      "id": "select:17",
+      "score": 0.8431564859598548
+    },
+    {
+      "id": "button:11",
+      "score": 0.8389183992126559
+    },
+    {
+      "id": "button:9",
+      "score": 0.8312806944542555
+    },
+    {
+      "id": "button:12",
+      "score": 0.8245822247706628
+    }
+  ],
+  "timingScope": "encoding passages + query; initial model loading excluded"
+}

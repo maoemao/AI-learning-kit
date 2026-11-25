@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-24",
+  "browser": "Chrome headless via Playwright 1.56.1",
+  "checks": [
+    "50 lessons, 7 stages, 50 notes/quizzes, source appendix and all anchor targets",
+    "file:// offline read with no remote resource requests",
+    "completion, Chinese multiline notes and quiz persist after file:// reload; stored text remains inert",
+    "full text search, zero results and clear restore",
+    "Markdown exports have real line breaks, 50 lessons and source; JSON backup valid",
+    "JSON restore with confirmation updates note state",
+    "malformed/version-incompatible backup rejected",
+    "desktop 1440px and mobile 390px have no page horizontal overflow",
+    "storage failure is visible and export remains available",
+    "REAL local HTTP app emits meta/delta/sources/done, renders official source links",
+    "REAL HTTP missing-version clarification",
+    "CONTROLLED response fixture: old slow request cannot overwrite newer request",
+    "CONTROLLED truncated SSE fixture: EOF without done marked incomplete",
+    "CONTROLLED delayed response: stop remains stopped",
+    "REAL HTTP byte-fragmented Chinese POST, table default evidence, foreign Origin 403 and invalid input 400"
+  ],
+  "errors": []
+}

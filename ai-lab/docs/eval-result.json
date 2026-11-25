@@ -1,0 +1,79 @@
+{
+  "kind": "real lexical retrieval; human-authored ID labels, no LLM judge",
+  "snapshot": "element-plus@2.11.8",
+  "results": [
+    {
+      "id": "button-loading",
+      "hits": [
+        "button:7",
+        "button:11",
+        "dialog:0",
+        "select:17"
+      ],
+      "kind": "answerable",
+      "precision": 0.25,
+      "recall": 1,
+      "complete": true
+    },
+    {
+      "id": "button-loading-default",
+      "hits": [
+        "button:11",
+        "button:7",
+        "select:22",
+        "select:17"
+      ],
+      "kind": "answerable",
+      "precision": 0.25,
+      "recall": 1,
+      "complete": true
+    },
+    {
+      "id": "button-loading-custom",
+      "hits": [
+        "button:7",
+        "button:11",
+        "select:17",
+        "input:10"
+      ],
+      "kind": "answerable",
+      "precision": 0.5,
+      "recall": 1,
+      "complete": true
+    },
+    {
+      "id": "dialog-escape",
+      "hits": [
+        "dialog:13",
+        "dialog:1",
+        "dialog:5",
+        "dialog:7"
+      ],
+      "kind": "answerable",
+      "precision": 0.25,
+      "recall": 1,
+      "complete": true
+    },
+    {
+      "id": "unknown-button",
+      "hits": [
+        "button:11",
+        "button:7",
+        "button:10",
+        "select:17"
+      ],
+      "kind": "unanswerable",
+      "precision": null,
+      "recall": null,
+      "complete": null
+    },
+    {
+      "id": "zh-loading",
+      "hits": [],
+      "kind": "answerable",
+      "precision": 0,
+      "recall": 0,
+      "complete": false
+    }
+  ]
+}
